@@ -1,0 +1,8 @@
+ignoredBuiltDependencies:
+    - '@tailwindcss/oxide'
+
+onlyBuiltDependencies:
+    - bufferutil
+    - core-js
+    - es5-ext
+    - utf-8-validate
