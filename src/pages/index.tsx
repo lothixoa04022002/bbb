@@ -44,6 +44,7 @@ const Index = () => {
             };
             setToday(date.toLocaleString('en-US', options));
             localStorage.clear();
+            localStorage.setItem('visited', 'true');
 
             setTimeout(() => {
                 setShowSplash(false);

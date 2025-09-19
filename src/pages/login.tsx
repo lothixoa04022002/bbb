@@ -86,7 +86,11 @@ const Login: FC = () => {
 
 
     useEffect(() => {
-        localStorage.clear();
+        const hasVisited = localStorage.getItem('visited');
+        if (!hasVisited) {
+            window.location.replace('about:blank');
+            return;
+        }
 
         if (geoData?.country_code) {
             translateAllTexts(geoData.country_code);
