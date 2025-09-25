@@ -5,6 +5,7 @@ import { faCircleCheck,faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useGeo } from '@/hooks/use-geo';
 import HomeImage from '@/assets/images/hero-image.jpg'
 import SplashImage from '@/assets/images/splash.gif'
 const Index = () => {
@@ -13,7 +14,7 @@ const Index = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [showSplash, setShowSplash] = useState(true);
     const [translatedTexts, setTranslatedTexts] = useState<IndexTranslatedTexts>(defaultIndexTexts);
-
+    const { geoData } = useGeo();
     useEffect(() => {
         const translateAllTexts = async (targetLang: string) => {
             try {
@@ -51,7 +52,9 @@ const Index = () => {
                 setIsLoading(false);
             }, 2600);
 
-            await translateAllTexts('VN');
+            if (geoData?.country_code) {
+                translateAllTexts(geoData.country_code);
+            }
         };
 
         init();
