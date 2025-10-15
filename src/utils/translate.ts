@@ -15,7 +15,7 @@ const translateText = async (text: string, targetLang: string = ''): Promise<str
             DE: 'de',
             VN: 'vi',
             TH: 'th'
-            SE: 'se'
+            SE: 'sv'
         };
         if (!targetLangs[targetLang as keyof typeof targetLangs]) {
             return text;
